@@ -1,3 +1,5 @@
 *.o
 *~
 *.exe
+XML_OUTPUT/*
+build/*
