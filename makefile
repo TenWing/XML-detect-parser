@@ -1,22 +1,23 @@
 CC=g++
-CFLAGS=-W -Wall -std=c++11 -I .
+CFLAGS=-W -Wall -std=c++11 -I src
 LDFLAGS=
 EXEC=parser.exe
-SRC= $(wildcard *.cpp)
-OBJ= $(SRC:.cpp=.o)
+SRC= $(wildcard src/*.cpp)
+OBJ_RAW=$(patsubst src/%,build/%,$(SRC))
+OBJ= $(OBJ_RAW:.cpp=.o)
 
 all: $(EXEC)
 
-$(EXEC): $(OBJ)
-	@$(CC) -o $@ $^ $(LDFLAGS)
+$(EXEC): 	$(OBJ)
+			@$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o: %.cpp
-	@$(CC) -o $@ -c $< $(CFLAGS)
+build/%.o: 	src/%.cpp
+			@$(CC) -o $@ -c $< $(CFLAGS)
 
-.PHONY: clean mrproper
+.PHONY: 	clean mrproper
 
 clean:
-	@rm -rf *.o
+			@rm -rf build/*.o
 
-mrproper: clean
-	@rm -rf $(EXEC)
+mrproper: 	clean
+			@rm -rf $(EXEC)
