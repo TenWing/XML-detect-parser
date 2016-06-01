@@ -1,8 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 #include <vector>
+#include <sstream>
+
+#include <image.h>
 
 using namespace std;
 
@@ -39,12 +41,27 @@ int main(int argc, char** argv)
 
 	ifstream input(argv[1]);
 	string line;
+	vector<Image> images;
 
 	while(getline(input, line))
 	{
 		vector<string> tokens = split(line, '/');
-		cout << tokens[0] << endl;
+		Image image(tokens);
+		images.push_back(image);
 	}
+
+	string xml = "<images>";
+
+	for(unsigned int i = 0; i < images.size(); i++)
+		xml += images[i].XMLstring();
+
+	xml += "</images>";
+
+	ofstream output(argv[2]);
+	output << xml;
+
+	input.close();
+	output.close();
 
 	return 0;
 }

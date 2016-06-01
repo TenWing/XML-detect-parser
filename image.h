@@ -61,9 +61,10 @@ class Object
 		/**
 		 * @brief Builds an object with his label and the bounding box around him
 		 * @param label the name of the object
+		 * @param confidence the confidence score of detection
 		 * @param bbox the bounding box around the object
 		 */
-		Object(std::string label, Bbox bbox);
+		Object(std::string label, float confidence, Bbox bbox);
 
 		~Object();
 
@@ -79,6 +80,11 @@ class Object
 		 * @brief the name of the object
 		 */
 		std::string _label;
+
+		/**
+		 * @brief the confidence score of detection
+		 */
+		float _confidence;
 
 		/**
 		 * @brief the bounding box around the object
