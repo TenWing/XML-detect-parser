@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<images>
+	<image url="cat.jpg">
+		<object name="bouteille" confidence="0.905">
+			<bbox xmin="10.2" ymin="0" xmax="10.6" ymax="2.3" />
+		</object>
+		<object name="rateau" confidence="0.651">
+			<bbox xmin="10.2" ymin="0" xmax="10.6" ymax="2.3" />
+		</object>
+	</image>
+	<image url="moto.jpg">
+		<object name="roue" confidence="0.985">
+			<bbox xmin="10.2" ymin="0" xmax="10.6" ymax="2.3" />
+		</object>
+	</image>
+</images>
